@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Amaral - Desenvolvedor Fullstack</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #252526;
+            --bg-tertiary: #2d2d30;
+            --text-main: #d4d4d4;
+            --text-bright: #ffffff;
+            --accent-blue: #569cd6;
+            --accent-green: #6a9955;
+            --accent-orange: #ce9178;
+            --accent-teal: #4ec9b0;
+            --accent-yellow: #dcdcaa;
+            --border-color: #3e3e42;
+            --nav-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            color: var(--text-bright);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-blue);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .comment {
+            color: var(--accent-green);
+        }
+
+        .keyword {
+            color: var(--accent-blue);
+        }
+
+        .string {
+            color: var(--accent-orange);
+        }
+
+        .function {
+            color: var(--accent-yellow);
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background-color: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        .btn-cta {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-cta:hover {
+            background-color: #4a8cc7;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 50% 50%, #2d2d30 0%, #1e1e1e 100%);
+            position: relative;
+            padding-top: var(--nav-height);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(30, 30, 30, 0.9), rgba(30, 30, 30, 0.9)),
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiMzZTNlNDIiLz48L3N2Zz4=');
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            color: var(--accent-teal);
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #a0a0a0;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img-wrapper {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+
+        .about-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .about-img-wrapper:hover img {
+            transform: scale(1.02);
+        }
+
+        .terminal-block {
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        /* --- SKILLS SECTION --- */
+        .skills-section {
+            background-color: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeline-content {
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-blue);
+            width: 45%;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        /* Connectors for timeline */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--bg-primary);
+        }
+
+        /* --- QUOTE SECTION --- */
+        .quote-section {
+            text-align: center;
+            background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.8)),
+                        url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6IiBmaWxsPSIjMjUyNTI2IiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==');
+        }
+
+        blockquote {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-style: italic;
+            color: var(--text-bright);
+        }
+
+        cite {
+            color: var(--accent-teal);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: var(--text-main);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-blue);
+            transform: scale(1.1);
+        }
+
+        .social-icon.insta:hover { color: #E1306C; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                padding: 40px;
+                text-align: center;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                justify-content: flex-end !important;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-item::after {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">&lt;LucasAP /&gt;</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#contato" class="btn-cta">Contratar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <span class="hero-tag fade-in">Candidato a Estágio em Desenvolvimento</span>
+            <h1 class="fade-in">Lucas Amaral Primo</h1>
+            <p class="code-font fade-in"><span class="function">construir</span>(<span class="string">'futuro'</span>, <span class="string">'tecnologia'</span>);</p>
+            <div style="margin-top: 40px;">
+                <a href="#sobre" class="btn-cta">Ver Perfil Completo</a>
+                <a href="https://github.com/Luc-Amaral" target="_blank" style="margin-left: 20px; color: var(--text-main); text-decoration: none; font-weight: 600;"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre">
+        <div class="container">
+            <h2>Quem Sou</h2>
+            <div class="about-grid">
+                <div class="about-img-wrapper">
+                    <!-- Placeholder image representing coding/student -->
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/13008680911337269278" alt="Lucas programando">
+                </div>
+                <div class="terminal-block">
+                    <div class="terminal-header">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                        <span style="margin-left: 10px; color: #888; font-size: 0.8rem;">user_profile.js</span>
+                    </div>
+                    <p>
+                        <span class="keyword">const</span> <span class="function">candidato</span> = {<br>
+                        &nbsp;&nbsp;nome: <span class="string">"Lucas Amaral"</span>,<br>
+                        &nbsp;&nbsp;universidade: <span class="string">"UMFT - Ciência da Computação"</span>,<br>
+                        &nbsp;&nbsp;periodo: <span class="string">"Penúltimo"</span>,<br>
+                        &nbsp;&nbsp;disponibilidade: <span class="string">"Imediata"</span>,<br>
+                        &nbsp;&nbsp;objetivo: <span class="string">"Estágio em Desenvolvimento"</span><br>
+                        };
+                    </p>
+                    <br>
+                    <p class="comment">// Nota: Atualmente focado em Projetos de Extensão Acadêmica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2>Stack & Habilidades</h2>
+            <div class="skills-grid">
+                <!-- Card 1 -->
+                <div class="skill-card">
+                    <i class="fa-brands fa-java skill-icon"></i>
+                    <h3>Java Ecosystem</h3>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">Java Core, familiaridade com lógica orientada a objetos. Conhecimento teórico em Spring Framework.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="skill-card">
+                    <i class="fa-brands fa-node skill-icon" style="color: var(--accent-green);"></i>
+                    <h3>Node.js & JS</h3>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">JavaScript (ES6+), TypeScript, Node.js para backend e EJS para templating.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="skill-card">
+                    <i class="fa-solid fa-database skill-icon" style="color: var(--accent-orange);"></i>
+                    <h3>Dados & ORM</h3>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">Experiência prática com Prisma ORM e modelagem de bancos de dados.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="skill-card">
+                    <i class="fa-solid fa-users-gear skill-icon" style="color: var(--accent-teal);"></i>
+                    <h3>Soft Skills</h3>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">Visão de negócio, trabalho em equipe (Scrum/Agile), levantamento de requisitos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experiencia">
+        <div class="container">
+            <h2>Jornada & Projetos</h2>
+            <div class="timeline">
+                
+                <!-- Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="comment" style="font-size: 0.85rem;">2023 - 2025 (Aprox)</span>
+                        <h3 style="color: var(--accent-blue); margin: 5px 0;">Startup "Dormiu.br"</h3>
+                        <p style="margin-bottom: 10px; font-weight: 600;">Backend Developer & Requisitos</p>
+                        <ul style="list-style-position: inside; font-size: 0.9rem; color: #bbb;">
+                            <li>Desenvolvimento Backend com Node.js e Prisma.</li>
+                            <li>Responsável por requisitos funcionais.</li>
+                            <li>Projeto autossustentável por 2 anos.</li>
+                            <li>Participação no maior evento de startups em Florianópolis.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="comment" style="font-size: 0.85rem;">Projeto Acadêmico</span>
+                        <h3 style="color: var(--accent-green); margin: 5px 0;">Sysnema (Extensão)</h3>
+                        <p style="margin-bottom: 10px; font-weight: 600;">Fullstack Developer</p>
+                        <p style="font-size: 0.9rem; color: #bbb;">Proposta tecnológica para o setor Agro. Desenvolvimento utilizando TypeScript, JavaScript e EJS.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="comment" style="font-size: 0.85rem;">Autônomo</span>
+                        <h3 style="color: var(--accent-orange); margin: 5px 0;">Freelancer Workana</h3>
+                        <p style="margin-bottom: 10px; font-weight: 600;">Frontend & WordPress</p>
+                        <p style="font-size: 0.9rem; color: #bbb;">Atuação focada em customização de layouts e entrega de interfaces web sob demanda.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <i class="fa-solid fa-quote-left" style="font-size: 2rem; color: var(--border-color); margin-bottom: 20px;"></i>
+            <blockquote>
+                "Foi uma excelente experiência... consegui entender como é trabalhar em equipe, a parte jurídica e também fazer muitos contatos na área."
+            </blockquote>
+            <cite>- Lucas, sobre o encerramento da Startup</cite>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 40px;">Vamos conversar?</h2>
+            <div class="social-links">
+                <a href="https://github.com/Luc-Amaral" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/dormiu.br" target="_blank" class="social-icon insta" title="Instagram do Projeto Antigo">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="mailto:contato@exemplo.com" class="social-icon" title="Email (Simulado)">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+            <p style="color: #666; font-size: 0.9rem;">
+                &copy; 2026 Lucas Amaral Primo. Landing Page criada para processo seletivo Wisia.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Simple Fade-in Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation styles initially to sections
+        document.querySelectorAll('section h2, .skill-card, .timeline-content').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+```
