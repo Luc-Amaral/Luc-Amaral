@@ -8,8 +8,6 @@
 
 - 👯 I’m in collaborate on [sysnema](sysnema.com)
 
-- 🤝 I’m looking for help with **nothing**
-
 - 👨‍💻 All of my projects are available at [https://github.com/Luc-Amaral](https://github.com/Luc-Amaral)
 
 - 📫 How to reach me **l.amaralof12@gmail.com**
