@@ -5,7 +5,7 @@
 
 - 🌱 I’m currently learning **nestJS and nodeJS**
 
-- 👯 I’m looking to collaborate on [sysnema](sysnema.com)
+- 👯 I’m in collaborate on [sysnema](sysnema.com)
 
 - 🤝 I’m looking for help with **nothing**
 
