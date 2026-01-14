@@ -1,8 +1,8 @@
 <h1 align="center">Hi 👋, I'm Lucas B. Amaral</h1>
 
-- landing-page - https://luc-amaral.github.io/landing-page/
+- Web portifólio - https://luc-amaral.github.io/landing-page/
 
-- 🔭 I worked on [DormiU](dormiu.co)
+- 🔭 I worked on [DormiU](https://www.instagram.com/dormiu.br?igsh=MTdobXptMjVleXlmaw==)
 
 - 🌱 I’m currently learning **nestJS and nodeJS**
 
