@@ -1,7 +1,8 @@
 <h1 align="center">Hi 👋, I'm Lucas B. Amaral</h1>
-<h3 align="center">A coffe lover, QA and Backend developer from Brazil</h3>
 
-- 🔭 I worked working on [DormiU](dormiu.co)
+- landing-page - https://luc-amaral.github.io/landing-page/
+
+- 🔭 I worked on [DormiU](dormiu.co)
 
 - 🌱 I’m currently learning **nestJS and nodeJS**
 
