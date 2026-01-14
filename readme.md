@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Lucas B. Amaral</h1>
 <h3 align="center">A coffe lover, QA and Backend developer from Brazil</h3>
 
-- 🔭 I’m currently working on [DormiU](dormiu.co)
+- 🔭 I worked working on [DormiU](dormiu.co)
 
 - 🌱 I’m currently learning **nestJS and nodeJS**
 
@@ -13,7 +13,6 @@
 
 - 📫 How to reach me **l.amaralof12@gmail.com**
 
-- ⚡ Fun fact **Potatoes can be fried**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
